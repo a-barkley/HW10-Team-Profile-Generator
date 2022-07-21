@@ -1,20 +1,9 @@
 const Employee = require('../lib/employee');
 
 describe("Employee", () => {
-    describe("name", () => {
-        it("", () => {
-            expect("")
-        })
-    })
-    describe("id", () => {
-        it("", () => {
-            expect("")
-        })
-    })
-    describe("email", () => {
-        it("", () => {
-            expect("")
-        })
+    it("should create an employee object", () => {
+        
+        expect("")
     })
     describe("getName", () => {
         it("", () => {

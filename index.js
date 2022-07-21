@@ -2,7 +2,10 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const generateHTML = require('./src/generateHTML')
 
-const questionsInitial = [
+
+const team = []
+
+const questionsManager = [
     {
         name: 'managerName',
         message: "What is the team manager's name?"
@@ -19,12 +22,6 @@ const questionsInitial = [
         name: 'managerOffice',
         message: "What is the team manager's office number?"
     },
-    {
-        name: 'break',
-        message: "Would you like to add another team member?",
-        type: 'list',
-        choices: ['Engineer', 'Intern', 'Finish adding team members']
-    }
 ]
 
 const questionsEngineer = [
@@ -44,12 +41,6 @@ const questionsEngineer = [
         name: 'engineerGithub',
         message: "What is the engineer's github?"
     },
-    {
-        name: 'break',
-        message: "Would you like to add another team member?",
-        type: 'list',
-        choices: ['Engineer', 'Intern', 'Finish adding team members']
-    }
 ]
 
 const questionsIntern = [
@@ -69,27 +60,68 @@ const questionsIntern = [
         name: 'internSchool',
         message: "What is the intern's school?"
     },
+]
+
+const questionSelect = [
     {
-        name: 'break',
+        name: 'select',
         message: "Would you like to add another team member?",
         type: 'list',
         choices: ['Engineer', 'Intern', 'Finish adding team members']
     }
 ]
 
+
+function teamSelect() {
+    inquirer
+        .prompt(questionSelect)
+        .then(answers, () => {
+            switch(answers) {
+                case 'Engineer':
+                    createEngineer();
+                    break;
+                case 'Intern':
+                    createIntern();
+                    break;
+                case 'Finish adding team members':
+                    break;
+            }
+        })
+}
+
+function createManager() {
+    inquirer
+        .prompt(questionsManager)
+        .then(answers, () => {
+            team.push(answers)
+        })
+        .then(teamSelect())
+}
+
+function createEngineer() {
+    inquirer
+        .prompt(questionsEngineer)
+        .then(answers, () => {
+            team.push(answers)
+        })
+        .then(teamSelect())
+}
+
+function createIntern() {
+    inquirer
+        .prompt(questionsIntern)
+        .then(answers, () => {
+            team.push(answers)
+        })
+        .then(teamSelect())
+}
+
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateHTML(data), (err) => console.log(err))
 }
 
 function init() {
-    inquirer
-        .prompt(questionsInitial)
-        .then((answers) => {
-            writeToFile('./dist/index.html', answers);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    createManager()
 }       
 
 init();
