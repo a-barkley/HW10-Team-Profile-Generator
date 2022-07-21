@@ -78,10 +78,10 @@ function teamSelect() {
         .then(answers, () => {
             switch(answers) {
                 case 'Engineer':
-                    createEngineer();
+                    engineerQuestions();
                     break;
                 case 'Intern':
-                    createIntern();
+                    internQuestions();
                     break;
                 case 'Finish adding team members':
                     break;
@@ -89,7 +89,7 @@ function teamSelect() {
         })
 }
 
-function createManager() {
+function managerQuestions() {
     inquirer
         .prompt(questionsManager)
         .then(answers, () => {
@@ -98,7 +98,7 @@ function createManager() {
         .then(teamSelect())
 }
 
-function createEngineer() {
+function engineerQuestions() {
     inquirer
         .prompt(questionsEngineer)
         .then(answers, () => {
@@ -107,7 +107,7 @@ function createEngineer() {
         .then(teamSelect())
 }
 
-function createIntern() {
+function internQuestions() {
     inquirer
         .prompt(questionsIntern)
         .then(answers, () => {
@@ -121,7 +121,7 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
-    createManager()
+    managerQuestions()
 }       
 
 init();

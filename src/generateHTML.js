@@ -1,4 +1,52 @@
-function generateMarkdown(data) {
+function createManager(data) {
+    return `
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Manager
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: ${data.managerName}</li>
+            <li class="list-group-item">ID: ${data.managerId}</li>
+            <li class="list-group-item">Email: ${data.managerEmail}</li>
+            <li class="list-group-item">Office Number: ${data.managerOffice}</li>
+        </ul>
+    </div>
+    `
+}
+
+function createEngineer(data) {
+    return `
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Engineer
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: ${data.engineerName}</li>
+            <li class="list-group-item">ID: ${data.engineerId}</li>
+            <li class="list-group-item">Email: ${data.engineerEmail}</li>
+            <li class="list-group-item">GitHub: ${data.engineerGithub}</li>
+        </ul>
+    </div>
+    `
+}
+
+function createIntern(data) {
+    return `
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Intern
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: ${data.internName}</li>
+            <li class="list-group-item">ID: ${data.internId}</li>
+            <li class="list-group-item">Email: ${data.internEmail}</li>
+            <li class="list-group-item">School: ${data.internSchool}</li>
+        </ul>
+    </div>
+    `
+}
+
+function generateHTML(data) {
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -16,18 +64,12 @@ function generateMarkdown(data) {
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                Featured
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-        </div>
         
+        
+
     </body>
     </html>
     `
 }
+
+export {generateHTML}
