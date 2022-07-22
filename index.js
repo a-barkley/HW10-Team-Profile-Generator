@@ -122,6 +122,7 @@ function writeToFile(fileName, data) {
 
 function init() {
     managerQuestions()
+    
 }       
 
 init();

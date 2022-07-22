@@ -65,11 +65,11 @@ function generateHTML(data) {
         </div>
 
         
-        
+
 
     </body>
     </html>
     `
 }
 
-export {generateHTML}
+// export {generateHTML}
